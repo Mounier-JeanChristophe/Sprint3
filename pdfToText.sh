@@ -10,14 +10,14 @@
 		$(pdftotext $fich)
 	done
 
-	for fich in $(find CORPUS_TRAIN -name "*.txt" | grep -oP '(?<=/)[^ ]*')
+	for fich in $(find $1 -name "*.txt" | grep -oP '(?<=/)[^ ]*')
 	do
 		if [ ! -f TEXT/$fich ]
 			then 
-				mv CORPUS_TRAIN/$fich TEXT
+				mv $1/$fich TEXT
 		else
 			rm TEXT/$fich
-			mv CORPUS_TRAIN/$fich TEXT
+			mv $1/$fich TEXT
 		fi
 	done
 	
